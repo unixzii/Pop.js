@@ -97,6 +97,7 @@ M.define("Pop/Pop", ["Pop/DomHelper"], function(DomHelper) {
       overlayEl = null;
       rootEl = null;
       isShown = false;
+      isExiting = false;
     }, 500);
   };
 
