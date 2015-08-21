@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="./css/button.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./css/pop.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <button id="showMsg" class="button">Click me</button>
+    <button id="showInput" class="button">Input</button>
+    <button id="showInfo" class="button blue outline">Blue</button>
+    <button id="showSuccess" class="button green outline">Green</button>
+    <button id="showDanger" class="button red outline">Red</button>
+    <button id="showWarning" class="button yellow outline">Yellow</button>
+  </body>
+  <script src="./src/modulfy.js" charset="utf-8"></script>
+  <script src="./src/dom_helper.js" charset="utf-8"></script>
+  <script src="./src/pop.js" charset="utf-8"></script>
+  <script src="./src/form_extension.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var Pop = M.require("Pop/Pop");
+
+    document.getElementById("showMsg").onclick = function() {
+      Pop.message("This is a message", "Title");
+    };
+
+    document.getElementById("showInput").onclick = function() {
+      Pop.input("真实地姓名能够帮助大家更好地了解您", "您的名字", "小明", function() {
+        var your_name = Pop.getResult();
+        if (your_name !== "") {
+          Pop.dismiss();
+          Pop.message("好的，您已设置您的名字为" + your_name);
+        } else {
+          Pop.reject();
+        }
+      });
+    };
+
+    document.getElementById("showInfo").onclick = function() {
+      Pop.info("Your location is XXXXXXXXX", "Info");
+    };
+
+    document.getElementById("showSuccess").onclick = function() {
+      Pop.success("Your file has been upload", "Success!");
+    };
+
+    document.getElementById("showDanger").onclick = function() {
+      Pop.confirm("Are you sure to delete this file?", "Delete", function() {
+        Pop.dismiss();
+        Pop.message("The file has been deleted!", "Done");
+      }, "danger");
+    };
+
+    document.getElementById("showWarning").onclick = function() {
+      Pop.confirm("确定要需要关注XXX吗?<br>取消关注以后将不会再显示Ta的动态", "取消关注", function() {
+        Pop.dismiss();
+      });
+    };
+  </script>
+</html>

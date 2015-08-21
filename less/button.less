@@ -1,0 +1,98 @@
+// out: ../css/button.css, compress: true
+
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 4px 4px;
+  text-align: center;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  cursor: pointer;
+
+  &.large {
+    padding: 10px 20px;
+    font-size: 12pt;
+  }
+
+  &:hover {
+    background-color: darken(#fff, 8%);
+  }
+
+  &:active {
+    background-color: darken(#fff, 12%);
+  }
+
+  .button-theme-mixin (@color) when (lightness(@color) >= 80%) {
+    color: #000;
+  }
+
+  .button-theme-mixin (@color) when (lightness(@color) < 80%) {
+    color: #fff;
+  }
+
+  .button-theme-mixin (@color) {
+    background-color: @color;
+    border-color: darken(@color, 12%);
+
+    &:hover {
+      background-color: darken(@color, 8%);
+    }
+
+    &:active {
+      background-color: darken(@color, 12%);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+
+      &:active {
+        background-color: darken(@color, 8%);
+      }
+    }
+
+    &.outline {
+      border-color: @color;
+      background-color: transparent;
+      color: @color;
+
+      &:hover {
+        background-color: @color;
+        color: #fff;
+      }
+
+      &:active {
+        background-color: darken(@color, 12%);
+        color: #fff;
+
+        &:disabled {
+          background-color: @color;
+        }
+      }
+    }
+  }
+
+  &.blue {
+    .button-theme-mixin(#0274D8)
+  }
+
+  &.green {
+    .button-theme-mixin(#5CB85C)
+  }
+
+  &.lime {
+    .button-theme-mixin(#5BC0DE)
+  }
+
+  &.red {
+    .button-theme-mixin(#D9534F)
+  }
+
+  &.yellow {
+    .button-theme-mixin(#EFAD4E)
+  }
+}
