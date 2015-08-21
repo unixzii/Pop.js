@@ -149,6 +149,10 @@ M.define("Pop/Pop", ["Pop/DomHelper"], function(DomHelper) {
     rootEl = document.getElementById("pop-root");
 
     rootEl.onclick = function() {
+      if (isExiting) {
+        return;
+      }
+
       if (dismissOutside) {
         dismissPop();
       } else {
