@@ -136,9 +136,9 @@ M.define("Pop/Pop", ["Pop/DomHelper"], function(DomHelper) {
     DomHelper.create("pop-overlay").render();
 
     DomHelper.create("pop-root").create([
-      { className: "wrapper" }
+      { className: "pop-wrapper" }
     ]).create([
-      { className: "inner-wrapper" }
+      { className: "pop-inner-wrapper" }
     ]).create([
       { className: "pop-core" }
     ]).render();
@@ -190,8 +190,13 @@ M.define("Pop/Pop", ["Pop/DomHelper"], function(DomHelper) {
         return;
       }
 
-      rootEl.remove();
-      overlayEl.remove();
+      if (Element.prototype.remove) {
+        rootEl.remove();
+        overlayEl.remove();
+      } else {
+        rootEl.removeNode(true);
+        overlayEl.removeNode(true);
+      }
 
       coreEl = null;
       overlayEl = null;

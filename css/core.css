@@ -22,12 +22,12 @@
   animation: fade-out 0.3s both;
   -webkit-animation: fade-out 0.3s both;
 }
-.wrapper {
+.pop-wrapper {
   display: table;
   width: 100%;
   height: 100%;
 }
-.inner-wrapper {
+.pop-inner-wrapper {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
